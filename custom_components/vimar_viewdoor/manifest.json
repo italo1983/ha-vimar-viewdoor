@@ -1,0 +1,20 @@
+{
+  "domain": "vimar_viewdoor",
+  "name": "Vimar View Door (experimental)",
+  "version": "0.4.1",
+  "config_flow": true,
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "requirements": [
+    "quii-helper==0.2.0"
+  ],
+  "dependencies": [
+    "ffmpeg",
+    "stream"
+  ],
+  "codeowners": [
+    "@italo1983"
+  ],
+  "documentation": "https://github.com/italo1983/ha-vimar-viewdoor",
+  "issue_tracker": "https://github.com/italo1983/ha-vimar-viewdoor/issues"
+}

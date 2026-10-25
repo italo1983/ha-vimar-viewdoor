@@ -1,0 +1,39 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Vimar View Door",
+        "description": "Enter previously acquired video credentials. Do not enter a MyVimar password or door PIN. Credentials are stored in Home Assistant configuration.",
+        "data": {
+          "host": "LAN IP address",
+          "device_id": "Device UID",
+          "stream_key": "Stream key (32 byte)",
+          "auth_code": "Out-auth-code (64 characters)"
+        }
+      }
+    },
+    "error": {
+      "invalid_credentials": "Check the LAN address and credential format."
+    },
+    "abort": {
+      "already_configured": "Device already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Gate outputs",
+        "description": "Output mapping is provisional until physically tested. Saving sends no opening command. Empty password uses the configured device auth code. No opening is retried automatically.",
+        "data": {
+          "pedestrian_output": "Pedestrian output",
+          "driveway_output": "Driveway output",
+          "unlock_password": "Separate opening password (optional)",
+          "unlock_password_mode": "Password format"
+        }
+      }
+    },
+    "error": {
+      "duplicate_output": "Select distinct outputs."
+    }
+  }
+}

@@ -1,0 +1,55 @@
+blueprint:
+  name: Vimar - Apertura su arrivo con consenso
+  description: >-
+    Richiama un pulsante Vimar all'ingresso nella zona soltanto se l'aiutante
+    di consenso è acceso. Nessun controllo di stato del cancello o del veicolo.
+    Configurare e provare con supervisione; non attivato dall'integrazione.
+  domain: automation
+  homeassistant:
+    min_version: 2026.10.0
+  input:
+    arrival_entity:
+      name: Persona o telefono
+      selector:
+        entity:
+          filter:
+            - domain: person
+            - domain: device_tracker
+    arrival_zone:
+      name: Zona di arrivo
+      selector:
+        entity:
+          filter:
+            - domain: zone
+    consent:
+      name: Interruttore di consenso (crearlo inizialmente spento)
+      selector:
+        entity:
+          filter:
+            - domain: input_boolean
+    gate_button:
+      name: Pulsante del cancello da azionare
+      selector:
+        entity:
+          filter:
+            - domain: button
+              integration: vimar_viewdoor
+triggers:
+  - trigger: zone
+    entity_id: !input arrival_entity
+    zone: !input arrival_zone
+    event: enter
+conditions:
+  - condition: state
+    entity_id: !input consent
+    state: 'on'
+  - condition: template
+    value_template: >-
+      {{ this.attributes.last_triggered is none or
+         (now() - this.attributes.last_triggered).total_seconds() > 300 }}
+actions:
+  - action: button.press
+    target:
+      entity_id: !input gate_button
+mode: single
+max_exceeded: silent

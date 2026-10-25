@@ -1,0 +1,39 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Vimar View Door",
+        "description": "Inserisci le chiavi video già recuperate. Non usare la password MyVimar o il PIN del citofono. Servono IP locale, UID, stream key e out-auth-code. Le chiavi vengono conservate nelle impostazioni Home Assistant.",
+        "data": {
+          "host": "Indirizzo IP locale",
+          "device_id": "UID dispositivo",
+          "stream_key": "Stream key (32 byte)",
+          "auth_code": "Out-auth-code (64 caratteri)"
+        }
+      }
+    },
+    "error": {
+      "invalid_credentials": "Controlla IP locale e formato delle chiavi."
+    },
+    "abort": {
+      "already_configured": "Dispositivo già configurato."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Uscite cancelli",
+        "description": "Associazione provvisoria: verificare fisicamente ogni uscita prima dell’uso. Il salvataggio non invia aperture. Password vuota: usa il codice di autenticazione già configurato. Inserire una password separata solo se necessaria. Nessun comando verrà ripetuto automaticamente.",
+        "data": {
+          "pedestrian_output": "Uscita cancelletto",
+          "driveway_output": "Uscita cancello carrabile",
+          "unlock_password": "Password di apertura separata (opzionale)",
+          "unlock_password_mode": "Formato password"
+        }
+      }
+    },
+    "error": {
+      "duplicate_output": "Le due uscite devono essere diverse."
+    }
+  }
+}

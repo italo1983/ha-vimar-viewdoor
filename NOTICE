@@ -1,0 +1,5 @@
+This project depends on quii-helper 0.2.0, licensed under MIT.
+Copyright (c) 2026 quii-helper contributors.
+Upstream: https://github.com/xaer981/quii-helper
+The dependency is installed separately and is not vendored here.
+No vendor APK or extracted binary/certificate/key assets are distributed.
